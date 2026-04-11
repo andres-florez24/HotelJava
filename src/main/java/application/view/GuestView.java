@@ -1,9 +1,8 @@
 package application.view;
 
 import application.domain.Guest;
-import application.service.GuestAdminService;
-import application.service.GuestService;
-import application.service.GuestServiceImpl;
+import application.service.outputs.GuestAdminService;
+import application.service.outputs.GuestService;
 
 public class GuestView {
 

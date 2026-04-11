@@ -1,5 +1,7 @@
 package application.userinterface;
 
+import application.domain.BedRoom;
+import application.view.BedRoomView;
 import application.view.GuestView;
 
 import java.util.Scanner;
@@ -9,9 +11,11 @@ public class MenuApp {
     Scanner sc = new Scanner(System.in);
 
     private final GuestView guestView;
+    private final BedRoomView bedRoomView;
 
-    public MenuApp(GuestView guestView) {
+    public MenuApp(GuestView guestView, BedRoomView bedRoomView){
         this.guestView = guestView;
+        this.bedRoomView = bedRoomView;
     }
 
     public void showMainMenu(){
@@ -33,7 +37,8 @@ public class MenuApp {
                     break;
                 case 2:
                     System.out.println("Iniciar Sesion");
-                    showGuestMenu();
+                    //showGuestMenu();
+                    showBedRoomMenu();
                     break;
                 case 3:
                     System.out.println("Saliendo de la aplicacion");
@@ -84,13 +89,51 @@ public class MenuApp {
                     System.out.println("Opcion no valida, por favor seleccione una opcion valida");
 
             }
-
-
-
-
-
         }
-
     }
+
+
+    public void showBedRoomMenu(){
+
+        System.out.println("Menu Habitaciones");
+
+        Boolean init = true;
+
+        while(init){
+
+            System.out.println("Seleccione 1. Crear Habitaciones 3. Eliminar Habitaciones 4. Listar Hueabitaciones 5. Buscar habitaciones por id 6. salir");
+            int option = sc.nextInt();
+            sc.nextLine();
+            switch (option){
+                case 1:
+                    System.out.println("Crear huesped");
+                    bedRoomView.createBedRoom();
+                    break;
+                case 2:
+                    System.out.println("Actualizar Habitaciones");
+                    break;
+                case 3:
+                    System.out.println("Eliminar Habitaciones");
+                    break;
+                case 4:
+                    System.out.println("Listar Habitaciones");
+                    bedRoomView.getAllBedRooms();
+                    break;
+                case 5:
+                    System.out.println("Buscar habitaciones por id");
+                    break;
+                case 6:
+                    System.out.println("Saliendo del menu de habitaciones");
+                    init = false;
+                    break;
+                default:
+                    System.out.println("Opcion no valida, por favor seleccione una opcion valida");
+
+            }
+        }
+    }
+
+
+
 
 }
